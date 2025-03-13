@@ -1,14 +1,16 @@
+import { Button } from "@/components/ui/button";
+import { TypographyTitle } from "@/components/ui/typographyTitle";
 import type { Metadata } from "next";
 import Link from "next/link";
 
 export default function IndexPage() {
   return (
-    <>
-      <h1>Hello to Kiwi Assignment</h1>
+    <div className="space-y-10 text-center">
+      <TypographyTitle>Hello to Kiwi Assignment</TypographyTitle>
       <Link href="/passengers">
-        <button>Book a flight</button>
+        <Button>Book a flight</Button>
       </Link>
-    </>
+    </div>
   );
 }
 
