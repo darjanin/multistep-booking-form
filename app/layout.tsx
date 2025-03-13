@@ -19,15 +19,11 @@ export default function RootLayout({ children }: Props) {
           />
         </head>
         <body>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "2fr 1fr",
-              minHeight: "100dvh",
-            }}
-          >
-            <main style={{ borderRight: "1px solid black" }}>{children}</main>
-            <aside>
+          <div className="grid min-h-dvh grid-cols-12">
+            <main className="col-span-8 border-r bg-slate-50 p-4">
+              {children}
+            </main>
+            <aside className="col-span-4 p-4">
               <Overview />
             </aside>
           </div>

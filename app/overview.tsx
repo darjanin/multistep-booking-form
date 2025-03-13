@@ -27,10 +27,10 @@ export default function Overview() {
     (acc, type) => ({
       ...acc,
       [type]: passengers.filter(
-        ({ details: { category } }) => category === type
+        ({ details: { category } }) => category === type,
       ).length,
     }),
-    {} as Record<PassengerCategory, number>
+    {} as Record<PassengerCategory, number>,
   );
   const baggage = baggageTypes.reduce(
     (acc, type) => ({
@@ -38,22 +38,22 @@ export default function Overview() {
       [type]: passengers.filter(({ services: { baggage } }) => baggage[type])
         .length,
     }),
-    {} as Record<keyof Baggage, number>
+    {} as Record<keyof Baggage, number>,
   );
   const total =
     categoryTypes.reduce(
       (acc, type) => pricing[`category.${type}`] * categories[type] + acc,
-      0
+      0,
     ) +
     baggageTypes.reduce(
       (acc, type) => pricing[`baggage.${type}`] * baggage[type] + acc,
-      0
+      0,
     );
 
   return (
     <div>
-      <h2>Overview</h2>
-      <ul>
+      <h2 className="mb-4 text-lg">Overview</h2>
+      <ul className="space-y-2">
         {categoryTypes.map(
           (type) =>
             categories[type] > 0 && (
@@ -61,16 +61,16 @@ export default function Overview() {
                 {categories[type]}x {type} passenger -{" "}
                 {pricing[`category.${type}`] * categories[type]}€
               </li>
-            )
+            ),
         )}
         {baggageTypes.map(
           (type) =>
             baggage[type] > 0 && (
               <li key={type}>
-                {baggage[type]}x {type} passenger -{" "}
+                {baggage[type]}x {type} baggage -{" "}
                 {pricing[`baggage.${type}`] * baggage[type]}€
               </li>
-            )
+            ),
         )}
         <li>Total - {total}€</li>
       </ul>

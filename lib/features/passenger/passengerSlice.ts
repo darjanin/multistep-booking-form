@@ -20,6 +20,7 @@ interface Passenger {
 
 export interface PassengerSlice {
   passengers: Passenger[];
+  errorMessage?: string;
 }
 
 const newEmptyPassenger: Passenger = {
@@ -107,6 +108,10 @@ export const passengerSlice = createAppSlice({
     addPassenger: create.reducer((state) => {
       state.passengers.push(newEmptyPassenger);
     }),
+    addPassengerAndValidate: create.asyncThunk(async (_, { dispatch }) => {
+      dispatch(addPassenger());
+      dispatch(validateDetails());
+    }),
     removePassenger: create.reducer((state) => {
       state.passengers.pop();
     }),
@@ -120,18 +125,52 @@ export const passengerSlice = createAppSlice({
       (state, action) => {
         state.passengers[action.payload.index].services.baggage =
           action.payload.baggage;
+      },
+    ),
+    validateDetails: create.reducer((state) => {
+      const containsPassengerWithShortName = state.passengers.some(
+        (passenger) => passenger.details.name.length < 3,
+      );
+      if (containsPassengerWithShortName) {
+        state.errorMessage =
+          "Passenger names must be at least 3 characters long";
+      } else {
+        state.errorMessage = "";
       }
+    }),
+    updatePassengerAndValidate: create.asyncThunk(
+      async (
+        { index, passenger }: { index: number; passenger: PassengerDetails },
+        { dispatch },
+      ) => {
+        dispatch(updatePassenger({ index, passenger }));
+        dispatch(validateDetails());
+      },
     ),
   }),
   selectors: {
     selectPassengers: (state) => state.passengers,
+    selectPassengerCount: (state) => state.passengers.length,
     selectPassenger: (state, index: number) => state.passengers[index],
     selectPassengerDetails: (state, index: number) =>
       state.passengers[index].details,
+    selectErrorMessage: (state) => state.errorMessage,
   },
 });
 
-export const { addPassenger, removePassenger, updatePassenger, updateBaggage } =
-  passengerSlice.actions;
-export const { selectPassengers, selectPassenger, selectPassengerDetails } =
-  passengerSlice.selectors;
+export const {
+  addPassenger,
+  removePassenger,
+  updatePassenger,
+  updateBaggage,
+  validateDetails,
+  updatePassengerAndValidate,
+  addPassengerAndValidate,
+} = passengerSlice.actions;
+export const {
+  selectPassengers,
+  selectPassengerCount,
+  selectPassenger,
+  selectPassengerDetails,
+  selectErrorMessage,
+} = passengerSlice.selectors;
