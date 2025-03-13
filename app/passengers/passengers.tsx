@@ -28,9 +28,9 @@ function PassengerForm({ index }: { index: number }) {
   return (
     <form onChange={handlePassengerChange}>
       <select name="category" defaultValue={passenger.category}>
-        <option value="adult">Adult</option>
-        <option value="child">Child</option>
-        <option value="infant">Infant</option>
+        <option value="adult">Adult (age 18 and more)</option>
+        <option value="child">Child (age 3 - 17)</option>
+        <option value="infant">Infant (age 1 - 3)</option>
       </select>
       <input
         type="text"

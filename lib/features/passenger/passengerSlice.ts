@@ -1,13 +1,13 @@
 import { createAppSlice } from "@/lib/createAppSlice";
 
-type PassengerCategory = "adult" | "child" | "infant";
+export type PassengerCategory = "adult" | "child" | "infant";
 interface PassengerDetails {
   category: PassengerCategory;
   name: string;
   dateOfBirth: string;
   frequentFlyerNumber?: string;
 }
-interface Baggage {
+export interface Baggage {
   cabin: boolean;
   checked: boolean;
 }

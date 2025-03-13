@@ -22,7 +22,7 @@ export default function RootLayout({ children }: Props) {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "4fr 1fr",
+              gridTemplateColumns: "2fr 1fr",
               minHeight: "100dvh",
             }}
           >
