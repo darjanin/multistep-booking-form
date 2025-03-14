@@ -6,6 +6,8 @@ For UI library was chosen [shadcn/ui](https://ui.shadcn.com/) as had worked with
 
 The root page `/` has 2 options - start the booking process or filling the store with prefilled data (development/demo feature).
 
+Deployment is done through Vercel and project is running at [https://multistep-booking-form.vercel.app/](https://multistep-booking-form.vercel.app/).
+
 ## Getting Started
 
 ```bash
