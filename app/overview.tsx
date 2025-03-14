@@ -1,10 +1,12 @@
 "use client";
+import { Button } from "@/components/ui/button";
 import {
   Baggage,
   PassengerCategory,
+  resetDevData,
   selectPassengers,
 } from "@/lib/features/passenger/passengerSlice";
-import { useAppSelector } from "@/lib/hooks";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 
 // In case of this example, the pricing is hardcoded.
 // In a real-world application, you would fetch this data from an API.
@@ -21,6 +23,7 @@ const categoryTypes: PassengerCategory[] = ["adult", "child", "infant"];
 const baggageTypes: (keyof Baggage)[] = ["cabin", "checked"];
 
 export default function Overview() {
+  const dispatch = useAppDispatch();
   const passengers = useAppSelector(selectPassengers);
 
   const categories = categoryTypes.reduce(

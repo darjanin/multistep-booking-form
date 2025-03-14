@@ -28,3 +28,16 @@ export function getCategoryPerAge(age: number): PassengerCategory {
   if (age >= 3) return "child";
   return "infant";
 }
+
+export const formatDate = (dateString: string) => {
+  if (dateString === "") return "";
+  const date = new Date(Date.parse(dateString));
+  return new Intl.DateTimeFormat("sk-SK", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(date);
+};
+
+export const capitalize = (str: string) =>
+  str.charAt(0).toUpperCase() + str.slice(1);

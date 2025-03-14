@@ -23,7 +23,7 @@ export default function RootLayout({ children }: Props) {
             <main className="col-span-8 border-r bg-slate-50 p-4">
               {children}
             </main>
-            <aside className="col-span-4 p-4">
+            <aside className="col-span-4 min-h-screen p-4">
               <Overview />
             </aside>
           </div>

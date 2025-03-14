@@ -1,20 +1,10 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { TypographyTitle } from "@/components/ui/typographyTitle";
+import { TypographyTitle } from "@/components/ui/typography-title";
 import { selectPassengers } from "@/lib/features/passenger/passengerSlice";
 import { useAppSelector } from "@/lib/hooks";
+import { capitalize, formatDate } from "@/lib/utils";
 import Link from "next/link";
-
-const formatDate = (dateString: string) => {
-  if (dateString === "") return "";
-  const date = new Date(Date.parse(dateString));
-  return new Intl.DateTimeFormat("sk-SK", {
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  }).format(date);
-};
-const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 
 export default function Summary() {
   const passengers = useAppSelector(selectPassengers);

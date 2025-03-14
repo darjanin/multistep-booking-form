@@ -98,7 +98,7 @@ const initialStateDev = [
 ] as Passenger[];
 
 const initialState: PassengerSlice = {
-  passengers: initialStateDev,
+  passengers: [],
 };
 
 export const passengerSlice = createAppSlice({
@@ -147,6 +147,9 @@ export const passengerSlice = createAppSlice({
         dispatch(validateDetails());
       },
     ),
+    resetDevData: create.reducer((state) => {
+      state.passengers = initialStateDev;
+    }),
   }),
   selectors: {
     selectPassengers: (state) => state.passengers,
@@ -166,6 +169,7 @@ export const {
   validateDetails,
   updatePassengerAndValidate,
   addPassengerAndValidate,
+  resetDevData,
 } = passengerSlice.actions;
 export const {
   selectPassengers,
