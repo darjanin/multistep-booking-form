@@ -7,7 +7,7 @@ import ResetDevDataButton from "./resetDevData";
 export default function IndexPage() {
   return (
     <div className="space-y-10 text-center">
-      <TypographyTitle>Hello to Kiwi Assignment</TypographyTitle>
+      <TypographyTitle>Hello to Assignment</TypographyTitle>
       <div className="text-sm text-slate-700">
         <p>
           By clicking Book flight you can start process of choosing number of

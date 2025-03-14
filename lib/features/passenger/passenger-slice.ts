@@ -58,7 +58,7 @@ const initialStateDev = [
       category: "adult",
       name: "Bob",
       dateOfBirth: "1992-01-05",
-      frequentFlyerNumber: "HelloKIWI",
+      frequentFlyerNumber: "Hello",
     },
     services: {
       baggage: {
