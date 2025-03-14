@@ -1,6 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { resetDevData } from "@/lib/features/passenger/passengerSlice";
+import { resetDevData } from "@/lib/features/passenger/passenger-slice";
 import { useAppDispatch } from "@/lib/hooks";
 
 export default function ResetDevDataButton() {

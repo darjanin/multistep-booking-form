@@ -5,7 +5,7 @@ import { TypographyTitle } from "@/components/ui/typography-title";
 import {
   selectErrorMessage,
   selectPassengerCount,
-} from "@/lib/features/passenger/passengerSlice";
+} from "@/lib/features/passenger/passenger-slice";
 import { useAppSelector } from "@/lib/hooks";
 import { AlertCircle } from "lucide-react";
 import { useRouter } from "next/navigation";

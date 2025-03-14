@@ -1,4 +1,4 @@
-import { createAppSlice } from "@/lib/createAppSlice";
+import { createAppSlice } from "@/lib/create-app-slice";
 
 export type PassengerCategory = "adult" | "child" | "infant";
 interface PassengerDetails {
@@ -115,6 +115,10 @@ export const passengerSlice = createAppSlice({
     removePassenger: create.reducer((state) => {
       state.passengers.pop();
     }),
+    removePassengerAndValidate: create.asyncThunk(async (_, { dispatch }) => {
+      dispatch(removePassenger());
+      dispatch(validateDetails());
+    }),
     updatePassenger: create.reducer<{
       index: number;
       passenger: PassengerDetails;
@@ -170,6 +174,7 @@ export const {
   updatePassengerAndValidate,
   addPassengerAndValidate,
   resetDevData,
+  removePassengerAndValidate,
 } = passengerSlice.actions;
 export const {
   selectPassengers,

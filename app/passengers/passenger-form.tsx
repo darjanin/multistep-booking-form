@@ -5,11 +5,14 @@ import {
   PassengerCategory,
   selectPassengerDetails,
   updatePassengerAndValidate,
-} from "@/lib/features/passenger/passengerSlice";
+} from "@/lib/features/passenger/passenger-slice";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { calculateAge, getCategoryPerAge } from "@/lib/utils";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 
+/**
+ * A form to collect passenger details.
+ */
 export default function PassengerForm({ index }: { index: number }) {
   const dispatch = useAppDispatch();
   const passenger = useAppSelector((state) =>

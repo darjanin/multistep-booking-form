@@ -1,29 +1,23 @@
-# Redux Toolkit TypeScript Example
+# Multi-step Booking form with real-time pricing
 
-This example shows how to integrate Next.js with [Redux Toolkit](https://redux-toolkit.js.org).
+Project is setup by [example template with redux referenced in the redux-toolkit](https://redux-toolkit.js.org/introduction/getting-started#create-a-react-redux-app) codebase.
 
-**Redux Toolkit**(also known as "RTK" for short) provides a standardized way to write Redux logic. It includes utilities that help simplify many common use cases, including [store setup](https://redux-toolkit.js.org/api/configureStore), [creating reducers and writing immutable update logic](https://redux-toolkit.js.org/api/createreducer), and even [creating entire "slices" of state at once](https://redux-toolkit.js.org/api/createslice). This example showcases each of these features in conjunction with Next.js.
+For UI library was chosen [shadcn/ui](https://ui.shadcn.com/) as had worked with it for the last year on my previous project.
 
-## Deploy Your Own
+The root page `/` has 2 options - start the booking process or filling the store with prefilled data (development/demo feature).
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-redux)
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-redux&project-name=with-redux&repository-name=with-redux)
-
-## How to Use
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
+## Getting Started
 
 ```bash
-npx create-next-app --example with-redux with-redux-app
+npm install
+npm run dev
 ```
 
-```bash
-yarn create next-app --example with-redux with-redux-app
-```
+## Comments
 
-```bash
-pnpm create next-app --example with-redux with-redux-app
-```
-
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+- There's no validation on the date if it's into the future or really old where the passenger would be well above 100years. This one would need to be revisited and defined how it should behave to the past.
+- For validation of the fields in the passenger form has naive approach where changing the fields trigger validation and in case that the name of the passenger doesn't meet length it fills the `errorMessage` in the store and prevents continuation. If I spend more time on this one I would like to replace this one with `react-hook-form` with `zod` validation or similar approach (mentioned libraries are ones that I used during last year and liked them). 
+- Formatting of the date is done simply by using `Intl` in the browser with hardcoded locale. In production version this needs to respect user's locale and not having hardcoded format.
+- The monetary formatting in the overview assumes EUR only. That should be replace by functionality to store an amount with currency to allow correct formatting and calculation with respect to rounding rules.
+- As progress is stored in the Redux store, any hard refresh wipes it's content. With more time I would add middleware to the store so updates to the store are persisted in the local storage.
+- Types for the passengerSlice are located in the same files even that are exported in some cases as for this example project it makes sense to keep it together.

@@ -29,5 +29,5 @@ export default function IndexPage() {
 }
 
 export const metadata: Metadata = {
-  title: "Multistep Booking Form",
+  title: "Multi-Step Booking Form",
 };

@@ -5,7 +5,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import {
   selectPassenger,
   updateBaggage,
-} from "@/lib/features/passenger/passengerSlice";
+} from "@/lib/features/passenger/passenger-slice";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 
 export default function ServiceForm({ index }: { index: number }) {

@@ -1,7 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { TypographyTitle } from "@/components/ui/typography-title";
-import { selectPassengers } from "@/lib/features/passenger/passengerSlice";
+import { selectPassengers } from "@/lib/features/passenger/passenger-slice";
 import { useAppSelector } from "@/lib/hooks";
 import { capitalize, formatDate } from "@/lib/utils";
 import Link from "next/link";

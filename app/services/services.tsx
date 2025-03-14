@@ -1,7 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { TypographyTitle } from "@/components/ui/typography-title";
-import { selectPassengerCount } from "@/lib/features/passenger/passengerSlice";
+import { selectPassengerCount } from "@/lib/features/passenger/passenger-slice";
 import { useAppSelector } from "@/lib/hooks";
 import Link from "next/link";
 import ServiceForm from "./service-form";

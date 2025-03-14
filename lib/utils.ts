@@ -1,6 +1,6 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { PassengerCategory } from "./features/passenger/passengerSlice";
+import { PassengerCategory } from "./features/passenger/passenger-slice";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));

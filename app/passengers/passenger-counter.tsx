@@ -2,11 +2,14 @@
 import { Button } from "@/components/ui/button";
 import {
   addPassengerAndValidate,
-  removePassenger,
+  removePassengerAndValidate,
   selectPassengerCount,
-} from "@/lib/features/passenger/passengerSlice";
+} from "@/lib/features/passenger/passenger-slice";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 
+/**
+ * A component that allows the user to increment or decrement the number of passengers.
+ */
 export default function PassengerCounter() {
   const dispatch = useAppDispatch();
   const passengersCount = useAppSelector(selectPassengerCount);
@@ -15,7 +18,7 @@ export default function PassengerCounter() {
       <Button
         size="sm"
         onClick={() => {
-          dispatch(removePassenger());
+          dispatch(removePassengerAndValidate());
         }}
         disabled={passengersCount <= 1}
       >
